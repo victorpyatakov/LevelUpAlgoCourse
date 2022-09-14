@@ -1,7 +1,7 @@
 """Даны три числа a,b,c. Требуется найти среди них медиану (серединное значение в отсортированной последовательности);"""
 
 def find_mediane(a: int | float, b: int | float, c: int | float) -> int | float:
-    if isinstance(a, int | float) and isinstance(b, int | float) and isinstance(b, int | float):
+    if isinstance(a, int | float) and isinstance(b, int | float) and isinstance(c, int | float):
         if a > b and a > c:
             if b > c: 
                 return b
