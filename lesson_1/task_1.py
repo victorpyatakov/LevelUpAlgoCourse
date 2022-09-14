@@ -1,6 +1,5 @@
 """Даны три числа a,b,c. Требуется найти среди них медиану (серединное значение в отсортированной последовательности);"""
 
-
 def find_mediane(a: int | float, b: int | float, c: int | float) -> int | float:
     if isinstance(a, int | float) and isinstance(b, int | float) and isinstance(b, int | float):
         if a > b and a > c:
@@ -30,7 +29,6 @@ def test_float():
 def test_negative():
     assert find_mediane(-10, -100, -2) == -10
 
-
 def test_two_equal():
     assert find_mediane(4, 4, 5) == 4
 
@@ -40,9 +38,6 @@ def test_wrong_format():
     except TypeError as te:
         assert str(te) == "Input atributes must be int or float"
     
-
-
-
 
 if __name__ == "__main__":
     test_integer()
