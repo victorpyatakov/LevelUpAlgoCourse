@@ -30,10 +30,16 @@ def find_medium_number(arr: list[int | float]) -> int | float | None:
     if all_int:
         medium_number = int(medium_number)
 
-    # я бы написал medium_number in arr, но я не знаю, как это под капотом
-    for el in arr:
-        if el == medium_number: 
-            return el
+    # определил такую меру близости
+    result = arr[0]
+    min_dist = (max - result) - (result - min)
+    for el in arr[1:]:
+        dist = (max - el) - (el - min)
+        if dist < min_dist and dist >= 0:
+            min_dist = dist
+            result = el
+
+    return result
     
 def test_empty_list():
     try:
