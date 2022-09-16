@@ -1,24 +1,22 @@
 """Дано неотрицательное число. Требуется перевернуть его;"""
 
-def reverse_number(num: int | float) -> int | float:
-    if isinstance(num, int | float) and num >= 0:
+def reverse_number(num: int) -> int:
+    if isinstance(num, int) and num >= 0:
         if num // 10 == 0:
             return num
-        reverse_str_num = str(num)[::-1]
-        if str(num) == reverse_str_num:
-            return num
-        if isinstance(num, int):
-            return int(reverse_str_num)
-        else:
-            return float(reverse_str_num)
+
+        res = num % 10 
+        x = num // 10
+        while x:
+            res = res * 10 + x % 10
+            x = x // 10
+        return res
     else:
         raise TypeError("Input atribute must be positive and int or float")
     
 def test_int():
     assert reverse_number(123) == 321
 
-def test_float():
-    assert reverse_number(123.12) == 21.321
 
 def test_hundred():
     assert reverse_number(200) == 2
@@ -39,7 +37,6 @@ def test_wrong_format():
 
 if __name__ == "__main__":
     test_int()
-    test_float()
     test_one_digit()
     test_equal_numbers()
     test_wrong_format()
