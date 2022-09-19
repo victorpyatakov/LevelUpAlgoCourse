@@ -1,17 +1,20 @@
 """Реализовать класс Stack с использованием массива и списка"""
 
+import sre_compile
+
+
 class StackException(Exception):
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
 
 class Stack:
     def __init__(self, size: int = None) -> None:
-        self.size = size
+        self.__size = size
         self.__items = []
     
     def push(self, value: int) -> None:
-        if self.size:
-            if len(self.__items) == self.size:
+        if self.__size:
+            if len(self.__items) == self.__size:
                 raise StackException("You can't push in stack, stack is full size.")
         self.__items.append(value)
     
@@ -30,6 +33,10 @@ class Stack:
     @property
     def count(self) -> int:
         return len(self.__items)
+
+    @property
+    def size(self) -> int:
+        return self.__size
 
     def __str__(self) -> str:
         return f"{self.__items}"
@@ -64,6 +71,10 @@ def test_count():
     stack.push(1)
     assert stack.count == 1
 
+def test_size():
+    stack = Stack(5)
+    assert stack.size == 5
+
 def test_pop_empty():
     stack = Stack()
     try:
@@ -93,6 +104,7 @@ if __name__ == "__main__":
     test_pop()
     test_peek()
     test_count()
+    test_size()
     test_pop_empty()
     test_peek_empty()
     test_push_full_size()
