@@ -18,19 +18,17 @@
 #     return False
 
 def get_binary_search_index(arr: list[int], num: int) -> int:
-    min = 0
-    max = len(arr) - 1
-    i = 0
-    while i < len(arr) // 2:
-        mid = (max + min) // 2
+    left = 0
+    right = len(arr) - 1
+    mid = (left + right) // 2
+    while left < mid:
         if num > arr[mid]:
-            min = mid
-            i += 1
+            left = mid
         elif num < arr[mid]:
-            max = mid
-            i += 1
+            right = mid
         else:
             return mid
+        mid = (left + right) // 2
     return len(arr)
 
 def test_find():
