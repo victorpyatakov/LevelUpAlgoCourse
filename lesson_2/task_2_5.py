@@ -36,14 +36,15 @@ class BinarySearchThree:
 
 
     def left_root_right(self) -> list[int]:
-        def _left_root_right(root: NodeThreee, save_order: list[int]):
+        save_order = []
+        def _left_root_right(root: NodeThreee):
             if not root:
                 return
-            _left_root_right(root.left, save_order)
+            _left_root_right(root.left)
             save_order.append(root.value)
-            _left_root_right(root.right, save_order)
-        save_order = []
-        _left_root_right(self.root, save_order)
+            _left_root_right(root.right)
+        
+        _left_root_right(self.root)
         return save_order
 
 def test_correct_order():
