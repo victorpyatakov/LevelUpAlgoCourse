@@ -35,21 +35,25 @@ class BinarySearchThree:
         _insert(self.root, new_node)
 
 
-    def traverse(self):
-        def _traverse(root: NodeThreee):
+    def left_root_right(self) -> list[int]:
+        def _left_root_right(root: NodeThreee, save_order: list[int]):
             if not root:
                 return
-            _traverse(root.left)
-            print(root.value)
-            _traverse(root.right)
-        _traverse(self.root)
+            _left_root_right(root.left, save_order)
+            save_order.append(root.value)
+            _left_root_right(root.right, save_order)
+        save_order = []
+        _left_root_right(self.root, save_order)
+        return save_order
 
-
-    
-if __name__ == "__main__":
+def test_correct_order():
     bsf = BinarySearchThree()
     values = [5, 3, 2, 4 , 7, 6, 8]
     for value in values:
         bsf.insert(value)
-    bsf.traverse()
+    assert bsf.left_root_right() == [2, 3, 4, 5, 6, 7, 8]
+    
+if __name__ == "__main__":
+    test_correct_order()
+
 
