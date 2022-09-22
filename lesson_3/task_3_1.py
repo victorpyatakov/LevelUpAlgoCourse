@@ -1,7 +1,7 @@
 """Реализовать сортировку выбором"""
 
 def choice_sort(arr: list[int]) -> list[int]:
-    if len(arr) == 0:
+    if not len(arr):
         return []
 
     point = 0
