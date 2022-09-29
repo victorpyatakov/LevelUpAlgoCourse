@@ -22,9 +22,7 @@ def choice_sort(arr: list[int]) -> list[int]:
     return arr
 
 def test_correct():
-    arr = [5, 3, 8, 16, 9, 1]
-    arr = choice_sort(arr)
-    assert arr == [1, 3, 5, 8, 9, 16]
+    assert choice_sort([5, 3, 8, 16, 9, 1]) == [1, 3, 5, 8, 9, 16]
 
 if __name__ == "__main__":
     test_correct()
