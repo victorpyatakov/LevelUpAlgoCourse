@@ -17,17 +17,20 @@ def make_graph():
     return graph
 
 def bfs(graph: dict, begin_vertex: int):
-    print(begin_vertex)
     search_queue = deque()
     search_queue += graph[begin_vertex]
     searched = []
+    searched.append(begin_vertex)
     while search_queue:
         vertex = search_queue.popleft()
         if vertex not in searched:
-            print(vertex)
             search_queue += graph[vertex]
             searched.append(vertex)
+    return searched
+
+def test_bfs():
+    assert bfs(make_graph(), 1) == [1,2,3,4,5,6,7,9,10,8]
 
 if __name__ == "__main__":
-    bfs(make_graph(), 1)
+    test_bfs()
 
