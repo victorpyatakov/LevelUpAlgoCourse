@@ -7,9 +7,8 @@ def rev_sub_str_in_str(rev_str):
             i , j =  i + 1, j - 1
 
     def _get_next_char(rev_str, index) -> int:
-        while rev_str[index] == '_':
+        while index < len(rev_str) and rev_str[index] == '_':
             index += 1
-            if index == len(rev_str): break
         return index
 
     if not rev_str: return ""
